@@ -5,7 +5,7 @@ using Microsoft.AspNetCore.Razor.TagHelpers;
 namespace BootstrapIcons.AspNetCore
 {
     [HtmlTargetElement("svg", Attributes = "bootstrap-icon")]
-    public class BoostrapIconTagHelper : TagHelper
+    public class BootstrapIconTagHelper : TagHelper
     {
         public BootstrapIconGlyph BootstrapIcon { get; set; }
 
@@ -21,6 +21,16 @@ namespace BootstrapIcons.AspNetCore
                 return;
             }
 
+            if (!output.Attributes.ContainsName("width"))
+            {
+                output.Attributes.SetAttribute("width", "1em");
+            }
+    
+            if (!output.Attributes.ContainsName("height"))
+            {
+                output.Attributes.SetAttribute("height", "1em");
+            }
+        
             output.Attributes.SetAttribute("xmlns", "");
             output.Attributes.SetAttribute("fill", "currentColor");
             output.Attributes.SetAttribute("focusable", "false");
